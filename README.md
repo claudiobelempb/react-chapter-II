@@ -1,3 +1,11 @@
+# create project
+
+yarn create react-app name-project --template typescript
+
+# dependencies
+
+# dev-dependencies
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
