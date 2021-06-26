@@ -4,6 +4,9 @@ yarn create react-app name-project --template typescript
 
 # dependencies
 
+yarn add styled-components -S .\
+yarn add @types/styled-components -D .\
+
 # dev-dependencies
 
 # Getting Started with Create React App
