@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto');
+  @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* Global Styles */
   :root {
@@ -26,7 +26,6 @@ export const GlobalStyle = createGlobalStyle`
    html, body, #root {
 		height:100%;
     background: var(--bgcolor);
-    font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     font-size: 1rem;
     line-height: 1.6;
@@ -54,7 +53,7 @@ export const GlobalStyle = createGlobalStyle`
 
   }
 
-  input, textarea, button {
+  body, input, textarea, button {
     border: 0;
     /* outline: 0; */
     font-family: 'Poppins', sans-serif;
