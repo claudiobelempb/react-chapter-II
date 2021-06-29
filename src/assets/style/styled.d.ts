@@ -4,10 +4,10 @@ declare module "styled-components" {
   export interface DefaultTheme {
     title: string;
     colors: {
-      black: string;
       blue: string;
       blue_light: string;
       red: string;
+      red_light: string;
       green: string;
       green_light: string;
       white: string;
@@ -22,7 +22,6 @@ declare module "styled-components" {
       info: string;
       warning: string;
       danger: string;
-      danger_light: string;
     };
   }
 }

@@ -6,6 +6,18 @@ yarn create react-app name-project --template typescript
 
 yarn add styled-components -S.
 yarn add @types/styled-components -D.
+yarn add polished -S.
+yarn add react-switch -S.
+yarn add react-modal -S.
+yarn add @types/react-modal -D.
+yarn add react-icons -S.
+yarn add uuid -S.
+yarn add @types/uuid -D.
+yarn add react-router-dom -S.
+yarn add @types/react-router-dom -D.
+yarn add miragejs -S
+yarn add axios -S.
+yarn add @types/axios -D.
 
 # dev-dependencies
 

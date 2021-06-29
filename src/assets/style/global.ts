@@ -4,17 +4,18 @@ export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* Global Styles */
-  :root {
-    --bgcolor: #F0F2F5;
-    --red: #E52E4D;
-    --blue: #5429CC;
-    --blue-light: #6933FF;
 
-    --dark: #363F5F;
-    --dark-light: #969CB5;
-    --light: #FFFFFF;
-    --danger: #dc3545;
-    --success: #28a745;
+ :root {
+    --light: ${(props) => props.theme.colors.light};
+    --red: ${(props) => props.theme.colors.red};
+    --blue: ${(props) => props.theme.colors.blue};
+    --blue-light: ${(props) => props.theme.colors.blue_light};
+
+    --dark: ${(props) => props.theme.colors.dark};
+    --dark-light: ${(props) => props.theme.colors.dark_light};
+    --white: ${(props) => props.theme.colors.white};
+    --danger: ${(props) => props.theme.colors.danger};
+    --success: ${(props) => props.theme.colors.success};
   }
 
   * {
@@ -25,11 +26,11 @@ export const GlobalStyle = createGlobalStyle`
 
    html, body, #root {
 		height:100%;
-    background: var(--bgcolor);
+    background: ${(props) => props.theme.colors.light};
     -webkit-font-smoothing: antialiased;
     font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
+    /* line-height: 1.6; */
+    color: var(--dark-light);
 
     @media(max-width: 1080px) {
       font-size: 93.75%; //15px
@@ -44,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
   }
   
-  button {
+  button, a {
     cursor: pointer;
     transition: filter 0.2s;
     &:hover {
@@ -90,7 +91,7 @@ export const GlobalStyle = createGlobalStyle`
   .react-modal-content {
     width: 100%;
     max-width: 576px;
-    background-color: var(--light-color);
+    background-color: var(--light);
     padding: 3rem;
     position: relative;
     border-radius: 0.25rem;
@@ -110,7 +111,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: var(--primary-color);
+    color: var(--dark);
     text-decoration: none;
   }
 
@@ -157,19 +158,19 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .text-primary {
-    color: var(--primary-color);
+    color: var(--blue);
   }
 
   .text-dark {
-    color: var(--dark-color);
+    color: var(--dark);
   }
 
   .text-success {
-    color: var(--success-color);
+    color: var(--success);
   }
 
   .text-danger {
-    color: var(--danger-color);
+    color: var(--danger);
   }
 
   .text-center {
@@ -284,7 +285,7 @@ export const GlobalStyle = createGlobalStyle`
 
   .btn {
     display: inline-block;
-    background: var(--light-color);
+    background: var(--light);
     color: #333;
     padding: 0.4rem 1.3rem;
     font-size: 1rem;
@@ -318,7 +319,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0.2rem 0.7rem;
     text-align: center;
     margin: 0.3rem;
-    background: var(--light-color);
+    background: var(--light);
     color: #333;
     border-radius: 5px;
   }
@@ -327,7 +328,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0.7rem;
     margin: 1rem 0;
     opacity: 0.9;
-    background: var(--light-color);
+    background: var(--light);
     color: #333;
   }
 
@@ -335,7 +336,7 @@ export const GlobalStyle = createGlobalStyle`
   .bg-primary,
   .badge-primary,
   .alert-primary {
-    background: var(--primary-color);
+    background: var(--blue);
     color: #fff;
   }
 
@@ -343,7 +344,7 @@ export const GlobalStyle = createGlobalStyle`
   .bg-light,
   .badge-light,
   .alert-light {
-    background: var(--light-color);
+    background: var(--light);
     color: #333;
   }
 
@@ -351,7 +352,7 @@ export const GlobalStyle = createGlobalStyle`
   .bg-dark,
   .badge-dark,
   .alert-dark {
-    background: var(--dark-color);
+    background: var(--dark);
     color: #fff;
   }
 
@@ -359,7 +360,7 @@ export const GlobalStyle = createGlobalStyle`
   .bg-danger,
   .badge-danger,
   .alert-danger {
-    background: var(--danger-color);
+    background: var(--danger);
     color: #fff;
   }
 
@@ -367,7 +368,7 @@ export const GlobalStyle = createGlobalStyle`
   .bg-success,
   .badge-success,
   .alert-success {
-    background: var(--success-color);
+    background: var(--success);
     color: #fff;
   }
 
@@ -429,7 +430,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   table th {
-    background: var(--light-color);
+    background: var(--light);
   }
 
   /* Navbar */
@@ -455,7 +456,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .navbar a:hover {
-    color: var(--light-color);
+    color: var(--light);
   }
 
   .navbar .welcome span {
