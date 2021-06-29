@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { api } from "../../services/api";
+
 import { TableContainer } from "./style";
 
 interface ITableProps {
@@ -28,9 +30,7 @@ export const Table: React.FC<ITableProps> = ({
   tds,
 }: ITableProps) => {
   useEffect(() => {
-    fetch("http://localhost:3000/api/transactions")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
+    api.get("transactions").then((response) => console.log(response.data));
   }, []);
   return (
     <TableContainer tagcolor={tagcolor}>
