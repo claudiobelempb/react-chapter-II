@@ -1,6 +1,6 @@
-import React, { InputHTMLAttributes, LabelHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, LabelHTMLAttributes } from "react";
 
-import { InputContainer } from './style';
+import { InputContainer } from "./style";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -13,24 +13,18 @@ interface ILabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
 }
 
 const Label: React.FC<ILabelProps> = (props) => {
-  return (
-    <label {...props}/>
-  );
-}
+  return <label {...props} />;
+};
 
 // import { FaEnvelope } from 'react-icons/fa';
 
 const Input: React.FC<IInputProps> = (props) => {
   return (
     <InputContainer>
-      <Label form={props.name}>
-        {props.name}
-      </Label>
-      <input 
-        {...props}
-      />
+      <Label form={props.name}>{props.label}</Label>
+      <input {...props} />
     </InputContainer>
   );
-}
+};
 
 export { Input };

@@ -37,6 +37,7 @@ export const BoxContainerContainer = styled.div<IBoxProps>`
   max-width: 100%;
   height: 100%;
   border-radius: 0.3rem;
+  margin: 0 0 1rem 0;
 
   & .title {
     font-size: 0.9rem;

@@ -17,8 +17,8 @@ import { ModalDefault } from "../../components/ModalDefault";
 import { Form } from "../../components/Form";
 import { Input } from "../../components/Input";
 // import { formatDateRo, formatValueRo } from "../../utils/utils";
-// import ImgIncome from "../../assets/images/income.svg";
-// import ImgOutcome from "../../assets/images/outcome.svg";
+import ImgIncome from "../../assets/images/income.svg";
+import ImgOutcome from "../../assets/images/outcome.svg";
 // import ImgTotal from "../../assets/images/total.svg";
 
 export const Home: React.FC = () => {
@@ -45,7 +45,7 @@ export const Home: React.FC = () => {
             isBgColor={true}
             isGreen={true}
             color={"#FFF"}
-            title={"Nova transação"}
+            title={"New transaction"}
             onClick={handleNewTransactionOpenModal}
           />
         </Box>
@@ -55,13 +55,37 @@ export const Home: React.FC = () => {
         <ModalDefault
           isOpenModal={isNewTransactionOpenModal}
           isCloseModal={handleNewTransactionCloseModal}
+          isLarge={true}
         >
-          <h2>modal</h2>
           <Form>
-            <Input type={"text"} name={"Email"} />
-            <Input type={"password"} name={"Senha"} />
+            <h2>Created Transaction</h2>
+            <Input type={"text"} name={"name"} placeholder={"Título"} />
+            <Input type={"number"} name={"price"} placeholder={"Valor"} />
 
-            <Button type={"button"} isGreen={true} />
+            {/* <Input type={"submit"} name={"Send"} /> */}
+
+            <Box box={2}>
+              <Button
+                type={"button"}
+                isIcon={true}
+                src={ImgIncome}
+                isActive={true}
+                title={"Entrada"}
+              />
+              <Button
+                type={"button"}
+                isIcon={true}
+                src={ImgOutcome}
+                title={"Saida"}
+              />
+            </Box>
+
+            <Input type={"text"} name={"category"} placeholder={"Categoria"} />
+            <Button
+              type={"submit"}
+              isGreen={true}
+              title={"Created transaction"}
+            />
           </Form>
         </ModalDefault>
       </Main>

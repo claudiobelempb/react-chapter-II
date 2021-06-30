@@ -8,12 +8,19 @@ interface IModalProps {
   isOpenModal?: boolean;
   isCloseModal?: () => void;
   children?: React.ReactNode;
+  isLarge?: boolean;
+  isMedium?: boolean;
+  isSmall?: boolean;
 }
 
 const ModalDefault: React.FC<IModalProps> = ({ children, ...props }) => {
   Modal.setAppElement("#root");
   return (
-    <ModalContainer>
+    <ModalContainer
+      isLarge={props.isLarge}
+      isMedium={props.isMedium}
+      isSmall={props.isSmall}
+    >
       <Modal
         isOpen={props.isOpenModal ? props.isOpenModal : false}
         onRequestClose={props.isCloseModal}

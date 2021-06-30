@@ -12,7 +12,7 @@ interface IButtonProps {
   fontSize?: string;
   opacity?: number | string;
   isAfter?: boolean;
-  isImg?: boolean;
+  isIcon?: boolean;
   isActive?: boolean;
   jContent?: string;
   isLarge?: boolean;
@@ -20,6 +20,7 @@ interface IButtonProps {
   isSmall?: boolean;
   isBlue?: boolean;
   isGreen?: boolean;
+  isGreenLight?: boolean;
   isRed?: boolean;
 }
 
@@ -41,7 +42,6 @@ export const ButtonContainer = styled.div<IButtonProps>`
   color: ${(props) =>
     props.color ? props.color : props.theme.colors.dark_light};
   opacity: ${(props) => (props.opacity ? props.opacity : 1)};
-  clear: both;
 `;
 
 export const ButtonContent = styled.button<IButtonProps>`
@@ -50,14 +50,16 @@ export const ButtonContent = styled.button<IButtonProps>`
   width: ${(props) => (props.width ? props.width : 100)}%;
   /* min-width: ${(props) => (props.MinWidth ? props.MinWidth : 30)}%; */
   display: flex;
-  justify-content: center;
+  justify-content: ${(props) => (props.jContent ? props.jContent : "center")};
   align-items: center;
   position: relative;
   /* width: ${(props) => (props.width ? props.width : "1rem")}; */
   padding: 0 1rem;
   border-radius: 0.25rem;
   background: ${(props) =>
-    props.bgColor ? transparentize(0.9, props.bgColor) : "transparent"};
+    props.bgColor
+      ? transparentize(0.9, props.bgColor)
+      : props.theme.colors.light};
   /* margin-top: 20px; */
   color: ${(props) =>
     props.color ? props.color : props.theme.colors.dark_light};
@@ -96,6 +98,16 @@ export const ButtonContent = styled.button<IButtonProps>`
     props.isGreen &&
     css<IButtonProps>`
       background: ${props.bgColor ? props.bgColor : props.theme.colors.green};
+      color: ${props.color ? props.color : props.theme.colors.white};
+      opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+    `};
+
+  ${(props) =>
+    props.isGreenLight &&
+    css<IButtonProps>`
+      background: ${props.bgColor
+        ? props.bgColor
+        : props.theme.colors.green_light};
       color: ${props.color ? props.color : props.theme.colors.white};
       opacity: ${(props) => (props.opacity ? props.opacity : 1)};
     `};
@@ -143,7 +155,7 @@ export const ButtonContent = styled.button<IButtonProps>`
   }
 
   ${(props) =>
-    props.isImg &&
+    props.isIcon &&
     css<IButtonProps>`
       & img {
         margin-right: 1rem;

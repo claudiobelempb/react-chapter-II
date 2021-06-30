@@ -49,7 +49,7 @@ export const InputContainer = styled.div<IInputProps>`
   }
 
   input {
-    margin: 1.2rem 0;
+    margin: 0.5rem 0;
   }
 
   input[type="submit"],
@@ -61,6 +61,7 @@ export const InputContainer = styled.div<IInputProps>`
   input[type="email"],
   input[type="password"],
   input[type="date"],
+  input[type="number"],
   select,
   textarea {
     /* padding-right: 1rem;
@@ -122,7 +123,9 @@ export const InputContainer = styled.div<IInputProps>`
     }
 
     &::-webkit-input-placeholder {
-      color: #555;
+      color: ${(props) =>
+        props.color ? props.color : props.theme.colors.dark_light};
+      font-size: 1rem;
     }
 
     &--textarea {

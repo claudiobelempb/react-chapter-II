@@ -15,7 +15,7 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isAfter?: boolean;
   alt?: string;
   src?: string;
-  isImg?: boolean;
+  isIcon?: boolean;
   isActive?: boolean;
   jContent?: string;
   isLarge?: boolean;
@@ -23,13 +23,13 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isSmall?: boolean;
   isBlue?: boolean;
   isGreen?: boolean;
+  isGreenLight?: boolean;
   isRed?: boolean;
 }
 
 export function Button({ children, ...props }: IButtonProps) {
   return (
     <ButtonContainer jContent={props.jContent}>
-      {props.isImg ? <img src={props.src} alt={props.alt} /> : ""}
       <ButtonContent
         isBgColor={props.isBgColor}
         bgColor={props.bgColor}
@@ -41,7 +41,7 @@ export function Button({ children, ...props }: IButtonProps) {
         fontSize={props.fontSize}
         opacity={props.opacity}
         isAfter={props.isAfter}
-        isImg={props.isImg}
+        isIcon={props.isIcon}
         isActive={props.isActive}
         type={props.type}
         onClick={props.onClick}
@@ -51,8 +51,10 @@ export function Button({ children, ...props }: IButtonProps) {
         isSmall={props.isSmall}
         isBlue={props.isBlue}
         isGreen={props.isGreen}
+        isGreenLight={props.isGreenLight}
         isRed={props.isRed}
       >
+        {props.isIcon ? <img src={props.src} alt={props.alt} /> : ""}
         {props.title ? props.title : "Button"}
       </ButtonContent>
     </ButtonContainer>

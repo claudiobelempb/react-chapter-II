@@ -74,6 +74,14 @@ export const GlobalStyle = createGlobalStyle`
     cursor: not-allowed;
   }
 
+  .deposit {
+    color: #33CC95;
+  }
+
+  .withdraw {
+    color: #E52E4D;
+  }
+
   .react-modal-overlay {
     background-color: rgba(0, 0, 0, 0.5);
 
@@ -86,14 +94,6 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .deposit {
-    color: #33CC95;
-  }
-
-  .withdraw {
-    color: #E52E4D;
   }
 
   .react-modal-content {
