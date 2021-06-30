@@ -24,6 +24,7 @@ import ImgOutcome from "../../assets/images/outcome.svg";
 export const Home: React.FC = () => {
   const [isNewTransactionOpenModal, setIsNewTransactionOpenModal] =
     useState(false);
+  const [type, setType] = useState("deposit");
 
   function handleNewTransactionOpenModal() {
     setIsNewTransactionOpenModal(true);
@@ -69,14 +70,22 @@ export const Home: React.FC = () => {
                 type={"button"}
                 isIcon={true}
                 src={ImgIncome}
-                isActive={true}
+                isActive={type === "deposit"}
                 title={"Entrada"}
+                onClick={() => {
+                  setType("deposit");
+                }}
+                className={type === "deposit" ? "active" : ""}
               />
               <Button
+                isActive={type === "withdraw"}
                 type={"button"}
                 isIcon={true}
                 src={ImgOutcome}
                 title={"Saida"}
+                onClick={() => {
+                  setType("withdraw");
+                }}
               />
             </Box>
 
