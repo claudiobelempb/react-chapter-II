@@ -34,7 +34,7 @@ export const Section: React.FC<ISection> = ({
     <ContainerSection>
       <Container>
         <Content>
-          <h2 className={"font-zero"}>{props.title}</h2>
+          <h1 className={"font-zero"}>{props.title}</h1>
           {children}
         </Content>
       </Container>

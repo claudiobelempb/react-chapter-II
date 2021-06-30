@@ -15,18 +15,24 @@ interface IButtonProps {
   isImg?: boolean;
   isActive?: boolean;
   jContent?: string;
+  isLarge?: boolean;
+  isMedium?: boolean;
+  isSmall?: boolean;
+  isBlue?: boolean;
+  isGreen?: boolean;
+  isRed?: boolean;
 }
 
-export const ButtonContent = styled.button<IButtonProps>`
-  /* width: ${(props) => (props.width ? props.width : 100)}%; */
+export const ButtonContainer = styled.div<IButtonProps>`
+  width: ${(props) => (props.width ? props.width : 100)}%;
   max-width: ${(props) => (props.MaxWidth ? props.MaxWidth : 100)}%;
   /* min-width: ${(props) => (props.MinWidth ? props.MinWidth : 100)}%; */
   display: flex;
-  justify-content: center;
+  justify-content: ${(props) => (props.jContent ? props.jContent : "center")};
   align-items: center;
   position: relative;
   /* width: ${(props) => (props.width ? props.width : "1rem")}; */
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   height: 3rem;
   border-radius: 0.25rem;
   background: ${(props) =>
@@ -35,6 +41,72 @@ export const ButtonContent = styled.button<IButtonProps>`
   color: ${(props) =>
     props.color ? props.color : props.theme.colors.dark_light};
   opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+  clear: both;
+`;
+
+export const ButtonContent = styled.button<IButtonProps>`
+  height: 100%;
+  max-width: ${(props) => (props.MaxWidth ? props.MaxWidth : 100)}%;
+  width: ${(props) => (props.width ? props.width : 100)}%;
+  /* min-width: ${(props) => (props.MinWidth ? props.MinWidth : 30)}%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* width: ${(props) => (props.width ? props.width : "1rem")}; */
+  padding: 0 1rem;
+  border-radius: 0.25rem;
+  background: ${(props) =>
+    props.bgColor ? transparentize(0.9, props.bgColor) : "transparent"};
+  /* margin-top: 20px; */
+  color: ${(props) =>
+    props.color ? props.color : props.theme.colors.dark_light};
+  opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+
+  ${(props) =>
+    props.isLarge &&
+    css<IButtonProps>`
+      max-width: 70%;
+      min-width: 20rem;
+    `};
+
+  ${(props) =>
+    props.isMedium &&
+    css<IButtonProps>`
+      max-width: 50%;
+      min-width: 15rem;
+    `};
+
+  ${(props) =>
+    props.isSmall &&
+    css<IButtonProps>`
+      max-width: 30%;
+      min-width: 10rem;
+    `};
+
+  ${(props) =>
+    props.isBlue &&
+    css<IButtonProps>`
+      background: ${props.bgColor ? props.bgColor : props.theme.colors.blue};
+      color: ${props.color ? props.color : props.theme.colors.white};
+      opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+    `};
+
+  ${(props) =>
+    props.isGreen &&
+    css<IButtonProps>`
+      background: ${props.bgColor ? props.bgColor : props.theme.colors.green};
+      color: ${props.color ? props.color : props.theme.colors.white};
+      opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+    `};
+
+  ${(props) =>
+    props.isRed &&
+    css<IButtonProps>`
+      background: ${props.bgColor ? props.bgColor : props.theme.colors.red};
+      color: ${props.color ? props.color : props.theme.colors.white};
+      opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+    `};
 
   ${(props) =>
     props.isActive &&
@@ -78,35 +150,21 @@ export const ButtonContent = styled.button<IButtonProps>`
       }
     `};
 
-  & span {
+  /* & span {
     font-size: ${(props) => (props.fontSize ? props.fontSize : "1rem")};
     font-weight: normal;
     transition: opacity 0.3s;
     transition: border-color 0.2s;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &:hover {
       opacity: 0.7;
       border-color: ${darken(0.1, "#D7D7D7")};
     }
-  }
-`;
-
-export const ButtonContainer = styled.div<IButtonProps>`
-  /* width: ${(props) => (props.width ? props.width : 100)}%; */
-  max-width: ${(props) => (props.MaxWidth ? props.MaxWidth : 100)}%;
-  /* min-width: ${(props) => (props.MinWidth ? props.MinWidth : 100)}%; */
-  display: flex;
-  justify-content: ${(props) => (props.jContent ? props.jContent : "center")};
-  align-items: center;
-  position: relative;
-  /* width: ${(props) => (props.width ? props.width : "1rem")}; */
-  /* padding: 0 1rem; */
-  height: 3rem;
-  border-radius: 0.25rem;
-  background: ${(props) =>
-    props.bgColor ? transparentize(0.9, props.bgColor) : "transparent"};
-  /* margin-top: 20px; */
-  color: ${(props) =>
-    props.color ? props.color : props.theme.colors.dark_light};
-  opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+  } */
 `;

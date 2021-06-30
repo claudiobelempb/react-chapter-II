@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
 import { TableContainer } from "./style";
@@ -29,8 +29,10 @@ export const Table: React.FC<ITableProps> = ({
   ths,
   tds,
 }: ITableProps) => {
+  const [transactions, setTransaction] = useState("");
+  console.log(transactions);
   useEffect(() => {
-    api.get("transactions").then((response) => console.log(response.data));
+    api.get("transactions").then((response) => setTransaction(response.data));
   }, []);
   return (
     <TableContainer tagcolor={tagcolor}>

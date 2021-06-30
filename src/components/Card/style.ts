@@ -5,7 +5,7 @@ interface ICardProps {
   color?: string;
 }
 
-export const CardContainer = styled.article<ICardProps>`
+export const CardContainer = styled.div<ICardProps>`
   width: 100%;
   height: auto;
   min-height: 136px;
@@ -33,9 +33,9 @@ export const CardValue = styled.div`
   line-height: 3.5rem;
 `;
 
-export const CardIcon = styled.h1``;
+export const CardIcon = styled.div``;
 
-export const CardTitle = styled.h1<ICardProps>`
+export const CardTitle = styled.h3<ICardProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;

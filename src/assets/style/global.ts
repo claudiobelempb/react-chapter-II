@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* Global Styles */
 
@@ -61,6 +61,14 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
   [disabled] {
     opacity: 0.6;
     cursor: not-allowed;
@@ -108,23 +116,6 @@ export const GlobalStyle = createGlobalStyle`
     &:hover {
       filter: brightness(0.2);
     }
-  }
-
-  a {
-    color: var(--dark);
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: #666;
-  }
-
-  ul {
-    list-style: none;
-  }
-
-  img {
-    max-width: 100%;
   }
 
   /* Utilities */
@@ -394,44 +385,12 @@ export const GlobalStyle = createGlobalStyle`
     border-radius: 50%;
   }
 
-  /* Forms */
-  input {
-    margin: 1.2rem 0;
-  }
-
   .form-text {
     display: block;
     margin-top: 0.3rem;
     color: #888;
   }
 
-  input[type='text'],
-  input[type='email'],
-  input[type='password'],
-  input[type='date'],
-  select,
-  textarea {
-    display: block;
-    width: 100%;
-    padding: 0.4rem;
-    font-size: 1.2rem;
-    border: 1px solid #ccc;
-  }
-
-  input[type='submit'],
-  button {
-    font: inherit;
-  }
-
-  table th,
-  table td {
-    padding: 1rem;
-    text-align: left;
-  }
-
-  table th {
-    background: var(--light);
-  }
 
   /* Navbar */
   .navbar {

@@ -49,7 +49,7 @@ const Main: React.FC<IMainProps> = ({ children, ...props }: IMainProps) => {
       isbg={props.isbg}
     >
       {children}
-      <h2 className={"font-zero"}>{props.title}</h2>
+      {/* <h2 className={"font-zero"}>{props.title}</h2> */}
     </MainContainer>
   );
 };

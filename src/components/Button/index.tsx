@@ -18,6 +18,12 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isImg?: boolean;
   isActive?: boolean;
   jContent?: string;
+  isLarge?: boolean;
+  isMedium?: boolean;
+  isSmall?: boolean;
+  isBlue?: boolean;
+  isGreen?: boolean;
+  isRed?: boolean;
 }
 
 export function Button({ children, ...props }: IButtonProps) {
@@ -40,8 +46,14 @@ export function Button({ children, ...props }: IButtonProps) {
         type={props.type}
         onClick={props.onClick}
         title={props.title}
+        isLarge={props.isLarge}
+        isMedium={props.isMedium}
+        isSmall={props.isSmall}
+        isBlue={props.isBlue}
+        isGreen={props.isGreen}
+        isRed={props.isRed}
       >
-        <span>{props.title ? props.title : "Button"}</span>
+        {props.title ? props.title : "Button"}
       </ButtonContent>
     </ButtonContainer>
   );

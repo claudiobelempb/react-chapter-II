@@ -8,22 +8,8 @@ export const LabelContainer = styled.span<IInputProps>``;
 
 export const InputContainer = styled.div<IInputProps>`
   /* margin-top: 30px; */
-
-  & label {
-  }
-
-  & label > span {
-  }
-
-  & label > input {
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-  }
-
-  padding: 10px 0;
+  /* padding: 10px 0; */
   width: 100%;
-  float: left;
   position: relative;
 
   &--padding {
@@ -43,8 +29,8 @@ export const InputContainer = styled.div<IInputProps>`
 
   &__title {
     display: block;
-    margin: 15px 0px 5px 0px;
-    font-size: 1.1em;
+    margin: 1rem 0.25rem;
+    font-size: 1rem;
   }
 
   &__shadow {
@@ -62,24 +48,35 @@ export const InputContainer = styled.div<IInputProps>`
     }
   }
 
-  & [type="text"],
-  [type="email"],
-  [type="password"],
-  [type="number"] {
-    padding-right: 1rem;
+  input {
+    margin: 1.2rem 0;
+  }
+
+  input[type="submit"],
+  button {
+    font: inherit;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="date"],
+  select,
+  textarea {
+    /* padding-right: 1rem;
     padding-left: 0.5rem;
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.5rem; */
     /* border: 1px #ccc solid;  */
-    border: 3px solid transparent;
+    display: block;
+    padding: 0.4rem;
+    font-size: 1.2rem;
+    border: 0.05rem solid transparent;
     width: 100%;
     background-color: ${(props) => props.theme.colors.gray};
     color: ${(props) => props.theme.colors.dark};
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    font-size: 1em;
-    height: 100%;
+    border-radius: 0.25rem;
+    height: 3rem;
 
     ${(props) =>
       props.isHover &&

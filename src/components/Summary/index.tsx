@@ -12,7 +12,7 @@ import total from "../../assets/images/total.svg";
 export function Summary() {
   return (
     <>
-      <Section title={"Summary"}>
+      <Article title={"Article Summary"}>
         <Box box={3}>
           <Card
             icon={income}
@@ -35,12 +35,12 @@ export function Summary() {
             alt={"total"}
           />
         </Box>
-      </Section>
-      <Article title={"List"}>
+      </Article>
+      <Section title={"Section Table"}>
         <Box>
           <Table />
         </Box>
-      </Article>
+      </Section>
     </>
   );
 }

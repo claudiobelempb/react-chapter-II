@@ -5,21 +5,26 @@ import { ModalContainer } from "./style";
 import closeImg from "../../assets/images/close.svg";
 
 interface IModalProps {
-  isOpen?: boolean;
-  onRequestClose?: () => void;
+  isOpenModal?: boolean;
+  isCloseModal?: () => void;
   children?: React.ReactNode;
 }
 
 const ModalDefault: React.FC<IModalProps> = ({ children, ...props }) => {
+  Modal.setAppElement("#root");
   return (
     <ModalContainer>
       <Modal
-        isOpen={props.isOpen ? props.isOpen : false}
-        onRequestClose={props.onRequestClose}
+        isOpen={props.isOpenModal ? props.isOpenModal : false}
+        onRequestClose={props.isCloseModal}
         overlayClassName={"react-modal-overlay"}
         className={"react-modal-content"}
       >
-        <button type={"button"} onClick={props.onRequestClose} className={"react-modal-close"}>
+        <button
+          type={"button"}
+          onClick={props.isCloseModal}
+          className={"react-modal-close"}
+        >
           <img src={closeImg} alt={"Bottom Close"} />
         </button>
         {children}
