@@ -21,6 +21,15 @@ interface ITableProps {
   }[];
 }
 
+interface ITransactions {
+  id: number;
+  title: string;
+  amount: number;
+  type: string;
+  category: string;
+  createdAd: string;
+}
+
 export const Table: React.FC<ITableProps> = ({
   title,
   subtitle,
@@ -29,10 +38,12 @@ export const Table: React.FC<ITableProps> = ({
   ths,
   tds,
 }: ITableProps) => {
-  const [transactions, setTransaction] = useState("");
+  const [transactions, setTransaction] = useState<ITransactions[]>([]);
   console.log(transactions);
   useEffect(() => {
-    api.get("transactions").then((response) => setTransaction(response.data));
+    api
+      .get("transactions")
+      .then((response) => setTransaction(response.data.transactions));
   }, []);
   return (
     <TableContainer tagcolor={tagcolor}>
@@ -46,24 +57,16 @@ export const Table: React.FC<ITableProps> = ({
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Title 01</td>
-            <td className={"deposit"}>Value 01</td>
-            <td>Category 01</td>
-            <td>Date 01</td>
-          </tr>
-          <tr>
-            <td>Title 02</td>
-            <td className={"withdraw"}> - Value 02</td>
-            <td>Category 02</td>
-            <td>Date 02</td>
-          </tr>
-          <tr>
-            <td>Title 03</td>
-            <td className={"deposit"}>Value 03</td>
-            <td>Category 03</td>
-            <td>Date 03</td>
-          </tr>
+          {transactions.map((transaction) => {
+            return (
+              <tr key={transaction.id}>
+                <td>{transaction.title}</td>
+                <td className={transaction.type}>{transaction.amount}</td>
+                <td>{transaction.type}</td>
+                <td>{transaction.createdAd}</td>
+              </tr>
+            );
+          })}
         </tbody>
         {/* <tfoot>
         <tr>
