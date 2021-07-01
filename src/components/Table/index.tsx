@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { formatValue } from "../../utils/formatValue";
+import { formatDate } from "../../utils/fromatDate";
 
 import { TableContainer } from "./style";
 
@@ -27,7 +29,7 @@ interface ITransactions {
   amount: number;
   type: string;
   category: string;
-  createdAd: string;
+  createdAt: string;
 }
 
 export const Table: React.FC<ITableProps> = ({
@@ -39,7 +41,7 @@ export const Table: React.FC<ITableProps> = ({
   tds,
 }: ITableProps) => {
   const [transactions, setTransaction] = useState<ITransactions[]>([]);
-  console.log(transactions);
+  // console.log(transactions);
   useEffect(() => {
     api
       .get("transactions")
@@ -61,9 +63,11 @@ export const Table: React.FC<ITableProps> = ({
             return (
               <tr key={transaction.id}>
                 <td>{transaction.title}</td>
-                <td className={transaction.type}>{transaction.amount}</td>
+                <td className={transaction.type}>
+                  {formatValue(transaction.amount)}
+                </td>
                 <td>{transaction.type}</td>
-                <td>{transaction.createdAd}</td>
+                <td>{formatDate(transaction.createdAt)}</td>
               </tr>
             );
           })}

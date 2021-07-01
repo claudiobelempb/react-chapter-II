@@ -5,7 +5,7 @@ interface ITableContainerProps {
 }
 
 export const TableContainer = styled.div<ITableContainerProps>`
-  margin-top: 4rem;
+  /* margin-top: 4rem; */
 
   & table {
     width: 100%;
