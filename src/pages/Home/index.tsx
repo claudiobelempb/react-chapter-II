@@ -20,7 +20,12 @@ import { Input } from "../../components/Input";
 import ImgIncome from "../../assets/images/income.svg";
 import ImgOutcome from "../../assets/images/outcome.svg";
 // import ImgTotal from "../../assets/images/total.svg";
-
+// activeColor: "green" | "red"
+// const colors = {
+//   green: "#33CC95",
+//   red: "#E52E4D",
+// };
+// colors[props.activeColor];
 export const Home: React.FC = () => {
   const [isNewTransactionOpenModal, setIsNewTransactionOpenModal] =
     useState(false);
@@ -63,22 +68,27 @@ export const Home: React.FC = () => {
             <Input type={"text"} name={"name"} placeholder={"Título"} />
             <Input type={"number"} name={"price"} placeholder={"Valor"} />
 
-            {/* <Input type={"submit"} name={"Send"} /> */}
+            {/* 
+              <Input type={"submit"} name={"Send"} /> 
+              option sem props
+              className={type === "deposit" ? "active" : ""}
+              option com props
+              isActive={type === "deposit"}
+            */}
 
             <Box box={2}>
               <Button
+                isGreenLight={type === "deposit"}
                 type={"button"}
                 isIcon={true}
                 src={ImgIncome}
-                isActive={type === "deposit"}
                 title={"Entrada"}
                 onClick={() => {
                   setType("deposit");
                 }}
-                className={type === "deposit" ? "active" : ""}
               />
               <Button
-                isActive={type === "withdraw"}
+                isRedLight={type === "withdraw"}
                 type={"button"}
                 isIcon={true}
                 src={ImgOutcome}

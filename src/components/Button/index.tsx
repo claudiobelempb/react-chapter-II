@@ -24,6 +24,7 @@ interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isBlue?: boolean;
   isGreen?: boolean;
   isGreenLight?: boolean;
+  isRedLight?: boolean;
   isRed?: boolean;
 }
 
@@ -52,6 +53,7 @@ export function Button({ children, ...props }: IButtonProps) {
         isBlue={props.isBlue}
         isGreen={props.isGreen}
         isGreenLight={props.isGreenLight}
+        isRedLight={props.isRedLight}
         isRed={props.isRed}
       >
         {props.isIcon ? <img src={props.src} alt={props.alt} /> : ""}

@@ -74,7 +74,7 @@ export const InputContainer = styled.div<IInputProps>`
     font-size: 1.2rem;
     border: 0.05rem solid transparent;
     width: 100%;
-    background-color: ${(props) => props.theme.colors.gray};
+    background-color: ${(props) => props.theme.colors.gray_light};
     color: ${(props) => props.theme.colors.dark};
     border-radius: 0.25rem;
     height: 3rem;
@@ -117,7 +117,8 @@ export const InputContainer = styled.div<IInputProps>`
     }
 
     &:focus {
-      border: 3px solid #488cf5;
+      /* border: 3px solid #488cf5; */
+      border-bottom: 0.3rem solid ${(props) => props.theme.colors.green};
       outline: none;
       /* color: #555; */
     }

@@ -22,6 +22,7 @@ interface IButtonProps {
   isGreen?: boolean;
   isGreenLight?: boolean;
   isRed?: boolean;
+  isRedLight?: boolean;
 }
 
 export const ButtonContainer = styled.div<IButtonProps>`
@@ -57,9 +58,7 @@ export const ButtonContent = styled.button<IButtonProps>`
   padding: 0 1rem;
   border-radius: 0.25rem;
   background: ${(props) =>
-    props.bgColor
-      ? transparentize(0.9, props.bgColor)
-      : props.theme.colors.light};
+    props.bgColor ? transparentize(0.9, props.bgColor) : "transparent"};
   /* margin-top: 20px; */
   color: ${(props) =>
     props.color ? props.color : props.theme.colors.dark_light};
@@ -107,9 +106,9 @@ export const ButtonContent = styled.button<IButtonProps>`
     css<IButtonProps>`
       background: ${props.bgColor
         ? props.bgColor
-        : props.theme.colors.green_light};
-      color: ${props.color ? props.color : props.theme.colors.white};
-      opacity: ${(props) => (props.opacity ? props.opacity : 1)};
+        : transparentize(0.8, props.theme.colors.green)};
+      color: ${props.color ? props.color : props.theme.colors.dark_light};
+      /* opacity: ${(props) => (props.opacity ? props.opacity : 1)}; */
     `};
 
   ${(props) =>
@@ -121,10 +120,20 @@ export const ButtonContent = styled.button<IButtonProps>`
     `};
 
   ${(props) =>
+    props.isRedLight &&
+    css<IButtonProps>`
+      background: ${props.bgColor
+        ? props.bgColor
+        : transparentize(0.8, props.theme.colors.red)};
+      color: ${props.color ? props.color : props.theme.colors.dark_light};
+      /* opacity: ${(props) => (props.opacity ? props.opacity : 1)}; */
+    `};
+
+  ${(props) =>
     props.isActive &&
     css<IButtonProps>`
       background: ${(props) =>
-        props.isActive ? props.theme.colors.gray_light : "transparent"};
+        props.isActive ? props.theme.colors.gray : "transparent"};
     `};
 
   ${(props) =>
