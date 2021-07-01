@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 
 import { LayoutSantoGraal } from "../../Layouts/LayoutSantoGraal";
 import { Box } from "../../components/Box";
@@ -29,6 +29,9 @@ import ImgOutcome from "../../assets/images/outcome.svg";
 export const Home: React.FC = () => {
   const [isNewTransactionOpenModal, setIsNewTransactionOpenModal] =
     useState(false);
+  const [title, setTitle] = useState("");
+  const [value, setValue] = useState(0);
+  const [category, setCategory] = useState("");
   const [type, setType] = useState("deposit");
 
   function handleNewTransactionOpenModal() {
@@ -37,6 +40,11 @@ export const Home: React.FC = () => {
 
   function handleNewTransactionCloseModal() {
     setIsNewTransactionOpenModal(false);
+  }
+
+  function handleCreateNewTransaction(event: FormEvent) {
+    event.preventDefault();
+    console.log({ title, value, category, type });
   }
 
   return (
@@ -63,10 +71,22 @@ export const Home: React.FC = () => {
           isCloseModal={handleNewTransactionCloseModal}
           isLarge={true}
         >
-          <Form>
+          <Form onSubmit={handleCreateNewTransaction}>
             <h2>Created Transaction</h2>
-            <Input type={"text"} name={"name"} placeholder={"Título"} />
-            <Input type={"number"} name={"price"} placeholder={"Valor"} />
+            <Input
+              type={"text"}
+              name={"name"}
+              placeholder={"Título"}
+              value={title}
+              onChange={(event) => setTitle(event.target.value)}
+            />
+            <Input
+              type={"number"}
+              name={"price"}
+              placeholder={"Valor"}
+              value={value}
+              onChange={(event) => setValue(Number(event.target.value))}
+            />
 
             {/* 
               <Input type={"submit"} name={"Send"} /> 
@@ -99,7 +119,13 @@ export const Home: React.FC = () => {
               />
             </Box>
 
-            <Input type={"text"} name={"category"} placeholder={"Categoria"} />
+            <Input
+              type={"text"}
+              name={"category"}
+              placeholder={"Categoria"}
+              value={category}
+              onChange={(event) => setCategory(event.target.value)}
+            />
             <Button
               type={"submit"}
               isGreen={true}
