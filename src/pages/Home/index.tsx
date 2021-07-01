@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from "react";
+import { api } from "../../services/api";
 
 import { LayoutSantoGraal } from "../../Layouts/LayoutSantoGraal";
 import { Box } from "../../components/Box";
@@ -44,7 +45,8 @@ export const Home: React.FC = () => {
 
   function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
-    console.log({ title, value, category, type });
+    const data = { title, value, category, type };
+    api.post("/transactions", data);
   }
 
   return (
