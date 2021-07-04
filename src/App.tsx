@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import { TransactionsContextProvider } from "./TransactionsContext";
+import { TransactionsContextProvider } from "./hooks/useTransactions";
 import { GlobalStyle } from "./assets/style/global";
 import standard from "./assets/style/themes/standard";
 

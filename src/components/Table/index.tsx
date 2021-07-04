@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { TransactionsContext } from "../../TransactionsContext";
+import { useTransactions } from "../../hooks/useTransactions";
 import { formatValue } from "../../utils/formatValue";
 import { formatDate } from "../../utils/fromatDate";
 
@@ -31,7 +30,7 @@ export const Table: React.FC<ITableProps> = ({
   ths,
   tds,
 }: ITableProps) => {
-  const { transactions } = useContext(TransactionsContext);
+  const { transactions } = useTransactions();
   return (
     <TableContainer tagcolor={tagcolor}>
       <table>

@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, useContext } from "react";
+import React, { FormEvent, useState } from "react";
 
 import { LayoutSantoGraal } from "../../Layouts/LayoutSantoGraal";
 import { Box } from "../../components/Box";
@@ -14,7 +14,7 @@ import { Input } from "../../components/Input";
 // import { formatDateRo, formatValueRo } from "../../utils/utils";
 import ImgIncome from "../../assets/images/income.svg";
 import ImgOutcome from "../../assets/images/outcome.svg";
-import { TransactionsContext } from "../../TransactionsContext";
+import { useTransactions } from "../../hooks/useTransactions";
 // import ImgTotal from "../../assets/images/total.svg";
 // activeColor: "green" | "red"
 // const colors = {
@@ -26,7 +26,7 @@ export const Home: React.FC = () => {
   const [isNewTransactionOpenModal, setIsNewTransactionOpenModal] =
     useState(false);
 
-  const { createTransaction } = useContext(TransactionsContext);
+  const { createTransaction } = useTransactions();
 
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState(0);
