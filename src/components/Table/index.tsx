@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { api } from "../../services/api";
+import { useContext } from "react";
+import { TransactionsContext } from "../../TransactionsContext";
 import { formatValue } from "../../utils/formatValue";
 import { formatDate } from "../../utils/fromatDate";
 
 import { TableContainer } from "./style";
 
 interface ITableProps {
-  title?: string;
+  header?: string;
   subtitle?: string;
   cardcolor?: string;
   tagcolor?: string;
@@ -23,30 +23,15 @@ interface ITableProps {
   }[];
 }
 
-interface ITransactions {
-  id: number;
-  title: string;
-  amount: number;
-  type: string;
-  category: string;
-  createdAt: string;
-}
-
 export const Table: React.FC<ITableProps> = ({
-  title,
+  header,
   subtitle,
   tagcolor,
   amount,
   ths,
   tds,
 }: ITableProps) => {
-  const [transactions, setTransaction] = useState<ITransactions[]>([]);
-  // console.log(transactions);
-  useEffect(() => {
-    api
-      .get("transactions")
-      .then((response) => setTransaction(response.data.transactions));
-  }, []);
+  const { transactions } = useContext(TransactionsContext);
   return (
     <TableContainer tagcolor={tagcolor}>
       <table>
@@ -55,7 +40,8 @@ export const Table: React.FC<ITableProps> = ({
             <th>Title</th>
             <th>Value</th>
             <th>Category</th>
-            <th>Date</th>
+            <th>Created</th>
+            <th>Update</th>
           </tr>
         </thead>
         <tbody>
@@ -64,10 +50,12 @@ export const Table: React.FC<ITableProps> = ({
               <tr key={transaction.id}>
                 <td>{transaction.title}</td>
                 <td className={transaction.type}>
+                  {transaction.type === "withdraw" ? " - " : ""}
                   {formatValue(transaction.amount)}
                 </td>
                 <td>{transaction.type}</td>
                 <td>{formatDate(transaction.createdAt)}</td>
+                <td>{formatDate(transaction.updatedAt)}</td>
               </tr>
             );
           })}

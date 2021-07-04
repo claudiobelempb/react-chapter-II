@@ -1,25 +1,20 @@
-import React, { FormEvent, useState } from "react";
-import { api } from "../../services/api";
+import React, { FormEvent, useState, useContext } from "react";
 
 import { LayoutSantoGraal } from "../../Layouts/LayoutSantoGraal";
 import { Box } from "../../components/Box";
-// import { Container } from "../../components/Container";
-// import { Section } from "../../components/Section";
 import { Footer } from "../../components/Footer";
-// import { Container } from "../../components/Container";
-// import { Content } from "../../components/Content";
 import { Main } from "../../components/Main";
 import { Header } from "../../components/Header";
 import { Brand } from "../../components/Brand";
 import { Button } from "../../components/Button";
 import { Summary } from "../../components/Summary";
 import { ModalDefault } from "../../components/ModalDefault";
-// import { CardList } from "../../components/CardList";
 import { Form } from "../../components/Form";
 import { Input } from "../../components/Input";
 // import { formatDateRo, formatValueRo } from "../../utils/utils";
 import ImgIncome from "../../assets/images/income.svg";
 import ImgOutcome from "../../assets/images/outcome.svg";
+import { TransactionsContext } from "../../TransactionsContext";
 // import ImgTotal from "../../assets/images/total.svg";
 // activeColor: "green" | "red"
 // const colors = {
@@ -30,8 +25,11 @@ import ImgOutcome from "../../assets/images/outcome.svg";
 export const Home: React.FC = () => {
   const [isNewTransactionOpenModal, setIsNewTransactionOpenModal] =
     useState(false);
+
+  const { createTransaction } = useContext(TransactionsContext);
+
   const [title, setTitle] = useState("");
-  const [value, setValue] = useState(0);
+  const [amount, setAmount] = useState(0);
   const [category, setCategory] = useState("");
   const [type, setType] = useState("deposit");
 
@@ -43,10 +41,23 @@ export const Home: React.FC = () => {
     setIsNewTransactionOpenModal(false);
   }
 
-  function handleCreateNewTransaction(event: FormEvent) {
+  async function handleCreateNewTransaction(event: FormEvent) {
     event.preventDefault();
-    const data = { title, value, category, type };
-    api.post("/transactions", data);
+    console.log({ title, category, type, amount });
+
+    await createTransaction({
+      title,
+      category,
+      type,
+      amount,
+    });
+
+    setTitle("");
+    setAmount(0);
+    setCategory("");
+    setType("deposit");
+
+    handleNewTransactionCloseModal();
   }
 
   return (
@@ -77,17 +88,17 @@ export const Home: React.FC = () => {
             <h2>Created Transaction</h2>
             <Input
               type={"text"}
-              name={"name"}
+              name={"title"}
               placeholder={"Título"}
               value={title}
               onChange={(event) => setTitle(event.target.value)}
             />
             <Input
               type={"number"}
-              name={"price"}
+              name={"amount"}
               placeholder={"Valor"}
-              value={value}
-              onChange={(event) => setValue(Number(event.target.value))}
+              value={amount}
+              onChange={(event) => setAmount(Number(event.target.value))}
             />
 
             {/* 
